@@ -22,32 +22,22 @@
 
 /* body: 페이지 전체 배경과 폰트를 설정합니다 */
 body {
-  /* ── 4점 그레디언트 배경 ──────────────────────────────────────
-     radial-gradient를 4개 겹쳐서 화면 네 모서리마다 다른 색을
-     은은하게 뿌려줍니다. 레이어는 위에 쓴 것이 앞에 깔립니다.
-
-     ① 왼쪽 위 (at 0% 0%)  : 크리미한 바닐라 라떼 색 #fff8ee
-     ② 오른쪽 위 (at 100% 0%) : 따뜻한 살구/캬라멜 색 #fde8cf
-     ③ 오른쪽 아래 (at 100% 100%): 깊은 커피 브라운 색 #e8c9a8
-     ④ 왼쪽 아래 (at 0% 100%)  : 녹차라떼 같은 연한 올리브 #f0ede0
-
-     각 그레디언트는 투명(transparent)으로 끝나기 때문에
-     겹쳐도 자연스럽게 섞입니다.
-     background-color 의 베이지 #faf6f0 는 기본 바닥색으로
-     그레디언트가 없는 가운데 영역에 깔립니다. ──────────────── */
-  background-color: #faf6f0;
+  /* ── 24K 황금빛 럭셔리 4점 그레디언트 배경 ─────────────────────
+     순금빛 골드, 샴페인 골드, 따스한 캐러멜 브론즈 빛이 네 모서리에서
+     화려하게 번져 나와 부유하고 눈부신 황금빛 아우라를 뿜어냅니다. */
+  background-color: #fbf6ec;
   background-image:
-    radial-gradient(ellipse 80% 70% at 0% 0%,
-      rgba(255, 248, 238, 0.85) 0%,   /* ① 왼쪽 위: 바닐라 크림 */
+    radial-gradient(ellipse 85% 75% at 0% 0%,
+      rgba(255, 243, 191, 0.95) 0%,   /* ① 왼쪽 위: 샴페인 골드 크림 */
       transparent 70%),
-    radial-gradient(ellipse 80% 70% at 100% 0%,
-      rgba(253, 224, 190, 0.70) 0%,   /* ② 오른쪽 위: 캐러멜 */
+    radial-gradient(ellipse 85% 75% at 100% 0%,
+      rgba(255, 215, 0, 0.45) 0%,     /* ② 오른쪽 위: 24K 퓨어 골드 */
       transparent 70%),
-    radial-gradient(ellipse 80% 70% at 100% 100%,
-      rgba(210, 170, 120, 0.45) 0%,   /* ③ 오른쪽 아래: 원두 브라운 */
+    radial-gradient(ellipse 85% 75% at 100% 100%,
+      rgba(212, 160, 23, 0.50) 0%,    /* ③ 오른쪽 아래: 묵직한 로얄 골드 */
       transparent 70%),
-    radial-gradient(ellipse 80% 70% at 0% 100%,
-      rgba(224, 218, 196, 0.55) 0%,   /* ④ 왼쪽 아래: 오트밀 */
+    radial-gradient(ellipse 85% 75% at 0% 100%,
+      rgba(255, 230, 150, 0.70) 0%,   /* ④ 왼쪽 아래: 반짝이는 금모래 */
       transparent 70%);
 
   /* 배경이 스크롤해도 고정되지 않고 페이지와 함께 움직입니다 */
@@ -56,8 +46,8 @@ body {
   /* 폰트 우선순위: 맑은 고딕 → 나눔고딕 → 기본 sans-serif 순서로 적용 */
   font-family: '맑은 고딕', 'Malgun Gothic', 'Nanum Gothic', sans-serif;
 
-  /* 글자 색상: 너무 강하지 않은 짙은 회색 */
-  color: #333333;
+  /* 글자 색상: 럭셔리한 다크 에스프레소 골드 */
+  color: #2b1d0c;
 
   /* 줄 높이를 넉넉하게 설정해 텍스트를 읽기 쉽게 만듭니다 */
   line-height: 1.6;
@@ -68,76 +58,122 @@ body {
 
 
 /* =============================================
-   2. 색상 변수 설정 (CSS Custom Properties)
-   =============================================
-   :root에 변수를 만들면 나중에 색상을 바꿀 때
-   한 곳만 수정하면 됩니다. var(--변수명)으로 사용합니다. */
+   2. 색상 변수 설정 (24K 골든 카페 테마)
+   ============================================= */
 :root {
-  --color-brown:       #6b4226; /* 메인 갈색: 버튼, 강조 텍스트 */
-  --color-brown-light: #8b5e3c; /* 밝은 갈색: hover 효과 */
-  --color-brown-pale:  #d4a97440; /* 연한 갈색(투명): 포커스 그림자 */
-  --color-beige:       #faf6f0; /* 배경 베이지 */
-  --color-beige-dark:  #f0e6d8; /* 약간 진한 베이지: 헤더 배경 */
-  --color-border:      #d4b896; /* 입력칸 테두리 색 */
-  --color-success-bg:  #d4edda; /* 주문 완료 배경: 연두색 */
-  --color-success-text:#155724; /* 주문 완료 텍스트: 진한 초록 */
+  --color-gold-pure:   #d4af37; /* 24K 메인 골드 */
+  --color-gold-bright: #ffdf00; /* 눈부신 하이라이트 골드 */
+  --color-gold-dark:   #996515; /* 깊은 앤틱 골드 */
+  --color-gold-pale:   rgba(212, 175, 55, 0.25); /* 연한 골드 빛 (그림자용) */
+  --color-brown:       #8a5a00; /* 버튼/강조용 골든 브라운 */
+  --color-brown-light: #a87208; /* 버튼 hover 시 밝은 골드 */
+  --color-beige:       #fbf6ec; /* 은은한 샴페인 배경 */
+  --color-beige-dark:  #f5e7c8; /* 헤더 및 카드용 진한 골든 베이지 */
+  --color-border:      #e5c158; /* 반짝이는 금빛 테두리 */
+  --color-success-bg:  #fff9db; /* 주문 완료 배경: 눈부신 금빛 레몬 */
+  --color-success-text:#664d03; /* 주문 완료 텍스트 */
   --color-error:       #c0392b; /* 오류 메시지: 빨간색 */
-  --radius:            8px;     /* 둥근 모서리 기본값 */
-  --shadow:            0 4px 16px rgba(107, 66, 38, 0.12); /* 기본 그림자 */
+  --radius:            10px;    /* 둥근 모서리 기본값 */
+  --shadow:            0 8px 30px rgba(184, 134, 11, 0.22); /* 화려한 골든 글로우 그림자 */
 }
 
 
 /* =============================================
-   3. 레이아웃 - 컨테이너 (전체 카드 영역)
+   3. 레이아웃 - 컨테이너 (황금빛 반짝임 효과)
    ============================================= */
 
 /* .container: 주문서 전체를 감싸는 카드 형태의 박스 */
 .container {
-  /* 최대 너비 520px, 그 이상이면 중앙 정렬 */
   max-width: 520px;
-  margin: 32px auto;   /* 위아래 32px, 좌우 자동(가운데) */
-  padding: 0 16px 48px; /* 위 0, 좌우 16px, 아래 48px */
+  margin: 32px auto;
+  padding: 0 16px 48px;
+}
+
+/* 반짝이는 골든 쉐도우 및 골드 보더 */
+.gold-shine-container {
+  filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.35));
 }
 
 
 /* =============================================
-   4. 헤더 영역 (카페 로고 + 이름 + 슬로건)
+   4. 헤더 영역 (골든 카페 로고 + 이름 + 슬로건)
    ============================================= */
 
 .cafe-header {
-  /* 내부 요소를 세로로 가운데 정렬합니다 */
   text-align: center;
-
-  /* 헤더 배경: 약간 진한 베이지 */
-  background-color: var(--color-beige-dark);
-
-  /* 둥근 모서리 (위쪽만) */
+  background: linear-gradient(135deg, #fceecb 0%, #f7dc96 50%, #fbe7ba 100%);
   border-radius: var(--radius) var(--radius) 0 0;
-
-  padding: 36px 24px 28px;
-
-  /* 헤더 아래쪽 테두리 */
-  border-bottom: 2px solid var(--color-border);
+  padding: 38px 24px 30px;
+  border-bottom: 2.5px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
 }
 
-/* 카페 로고: ☕ 이모지를 크게 표시 */
+/* 헤더 상단에 지나가는 반짝임 광채 효과 (Shine Animation) */
+.cafe-header::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: shineWave 4s infinite ease-in-out;
+}
+
+@keyframes shineWave {
+  0%   { left: -70%; }
+  40%  { left: 140%; }
+  100% { left: 140%; }
+}
+
+/* 카페 로고: 👑 왕관 이모지 */
 .cafe-logo {
-  font-size: 64px;   /* 이모지 크기 */
+  font-size: 68px;
   line-height: 1;
   margin-bottom: 8px;
-
-  /* 이모지가 흔들리는 애니메이션 (페이지 로드 시) */
-  animation: swing 1.2s ease-in-out;
+  display: inline-block;
+  animation: crownPulse 2.5s infinite alternate ease-in-out;
 }
 
-/* ☕ 이모지 살짝 흔들리는 애니메이션 */
-@keyframes swing {
-  0%   { transform: rotate(0deg); }
-  20%  { transform: rotate(-12deg); }
-  50%  { transform: rotate(10deg); }
-  75%  { transform: rotate(-6deg); }
-  100% { transform: rotate(0deg); }
+@keyframes crownPulse {
+  0%   { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 4px #ffd700); }
+  50%  { transform: scale(1.1) rotate(-6deg); filter: drop-shadow(0 0 16px #ffdf00); }
+  100% { transform: scale(1) rotate(6deg); filter: drop-shadow(0 0 8px #d4af37); }
 }
+
+/* 황금빛 그라데이션 텍스트 (반짝이는 금빛 글씨) */
+.gold-gradient-text {
+  background: linear-gradient(90deg, #784900 0%, #d49000 35%, #ffd700 50%, #9e6300 75%, #663d00 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldTextShine 5s linear infinite;
+}
+
+@keyframes goldTextShine {
+  to { background-position: 200% center; }
+}
+
+.cafe-name {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.cafe-slogan {
+  font-size: 13.5px;
+  color: #7a5012;
+  font-weight: 600;
+}
+
 
 /* 카페 이름 h1 스타일 */
 .cafe-name {
@@ -357,19 +393,21 @@ body {
 .price-display {
   text-align: center;       /* 가운데 정렬 */
   font-size: 16px;
-  color: #5a4030;
-  background-color: var(--color-beige-dark);
-  border: 1.5px solid var(--color-border);
+  color: #614008;
+  background: linear-gradient(135deg, #fff9e6 0%, #fcedc5 100%);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius);
-  padding: 14px 20px;
+  padding: 16px 20px;
   margin-bottom: 20px;
+  box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-/* 금액 숫자 부분: 크고 굵고 갈색으로 */
+/* 금액 숫자 부분: 크고 굵고 눈부신 골드로 */
 .price-display strong {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--color-brown);
+  font-size: 26px;
+  font-weight: 800;
+  color: #855300;
+  text-shadow: 0 1px 2px rgba(255, 215, 0, 0.4);
 }
 
 /* "예상 금액:" 텍스트 오른쪽 여백 */
@@ -391,57 +429,77 @@ body {
 /* .btn: 모든 버튼에 공통으로 적용 */
 .btn {
   flex: 1;             /* 두 버튼이 동일한 비율로 너비를 나눕니다 */
-  padding: 13px 20px;
+  padding: 14px 20px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   font-family: inherit;
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-
-  /* transition: 버튼에 변화가 생길 때 0.18초 동안 부드럽게 바뀝니다
-     transform(위치)와 box-shadow(그림자)만 따로 지정해 성능을 높입니다 */
   transition: transform 0.18s ease, box-shadow 0.18s ease,
-              background-color 0.18s ease;
+              background 0.18s ease, filter 0.18s ease;
 }
 
-/* .btn-primary: 주문하기 버튼 (갈색 배경 + 흰 글씨) */
+/* .btn-primary: 골든 주문하기 버튼 (황금빛 그라데이션 + 골든 글로우) */
 .btn-primary {
-  background-color: var(--color-brown);
+  background: linear-gradient(135deg, #f7d050 0%, #d49511 50%, #b87c02 100%);
   color: #ffffff;
-  border: none;
+  border: 1px solid #ffd700;
+  box-shadow: 0 4px 15px rgba(212, 149, 17, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
 }
 
-/* 주문하기 버튼 hover: 마우스를 올리면 위로 떠오르는 효과
-   translateY(-4px): 버튼이 4px 위로 올라갑니다
-   box-shadow: 아래쪽에 진한 그림자가 생겨 '떠있는' 느낌을 줍니다 */
+/* 주문하기 버튼 반짝임 빔 */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: rotate(25deg);
+  animation: btnShine 3s infinite ease-in-out;
+}
+
+@keyframes btnShine {
+  0% { left: -80%; }
+  35% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* 주문하기 버튼 hover: 위로 떠오르며 황금빛 광채 증폭 */
 .btn-primary:hover {
-  background-color: var(--color-brown-light);
+  background: linear-gradient(135deg, #ffe072 0%, #e8a71a 50%, #c98802 100%);
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(107, 66, 38, 0.4);
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.55), 0 0 12px rgba(255, 223, 0, 0.6);
 }
 
-/* 주문하기 버튼 클릭 중: 다시 제자리로 내려오며 눌리는 느낌 */
+/* 주문하기 버튼 클릭 중 */
 .btn-primary:active {
   transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(107, 66, 38, 0.25);
+  box-shadow: 0 3px 8px rgba(212, 149, 17, 0.3);
 }
 
-/* .btn-secondary: 다시 작성 버튼 (흰 배경 + 갈색 테두리) */
+/* .btn-secondary: 다시 작성 버튼 (황금빛 테두리) */
 .btn-secondary {
   background-color: #ffffff;
-  color: var(--color-brown);
-  border: 2px solid var(--color-brown);
+  color: #855300;
+  border: 2px solid var(--color-border);
 }
 
 /* 다시 작성 버튼 hover */
 .btn-secondary:hover {
-  background-color: var(--color-beige-dark);
+  background-color: #fff9e6;
+  border-color: #d49511;
   transform: translateY(-1px);
 }
 
 .btn-secondary:active {
   transform: translateY(0);
+
 }
 
 
@@ -474,15 +532,16 @@ body {
    13. 주문 확인 메시지 영역
    ============================================= */
 
-/* #order-confirmation: 주문 완료 후 나타나는 확인 카드 */
+/* #order-confirmation: 주문 완료 후 나타나는 확인 카드 (골든 글로우) */
 #order-confirmation {
-  background-color: var(--color-success-bg);
-  color: var(--color-success-text);
-  border: 1.5px solid #b8dac4;
+  background: linear-gradient(135deg, #fffcf0 0%, #fff6d9 100%);
+  color: #664d03;
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius);
   padding: 24px 28px;
   margin-top: 20px;
   text-align: center;
+  box-shadow: 0 4px 18px rgba(212, 160, 23, 0.2);
 }
 
 /* 완료 아이콘 */
@@ -499,7 +558,7 @@ body {
 
 /* 확인 메시지 내부의 강조 텍스트 */
 #confirmation-message strong {
-  color: #0d3d20;
+  color: #855300;
 }
 
 
@@ -515,7 +574,7 @@ body {
 
 
 /* =============================================
-   15. 탭 메뉴 스타일
+   15. 탭 메뉴 스타일 (골든 탭)
    ============================================= */
 
 /* .tab-menu: 탭 버튼 2개를 가로로 나란히 배치하는 컨테이너 */
@@ -535,9 +594,9 @@ body {
   font-family: inherit;
   background: none;         /* 배경 없음 (투명) */
   border: none;
-  border-bottom: 3px solid transparent; /* 선택 시 갈색 밑줄이 들어올 자리 */
+  border-bottom: 3px solid transparent; /* 선택 시 골든 밑줄이 들어올 자리 */
   margin-bottom: -2px;      /* border-bottom이 tab-menu의 선 위에 겹치도록 */
-  color: #b0907a;           /* 선택 안 된 탭: 연한 갈색 글씨 */
+  color: #9e7b4f;           /* 선택 안 된 탭: 부드러운 골든 브라운 글씨 */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -548,13 +607,14 @@ body {
 
 /* .tab-btn.active: 현재 선택된 탭 */
 .tab-btn.active {
-  color: var(--color-brown);        /* 갈색 글씨 */
-  border-bottom-color: var(--color-brown); /* 갈색 밑줄 */
+  color: #855300;                  /* 진한 골든 브라운 글씨 */
+  border-bottom: 3px solid #d49511; /* 선명한 황금빛 밑줄 */
+  font-weight: 700;
 }
 
-/* 탭 hover: 마우스를 올리면 살짝 진해집니다 */
+/* 탭 hover: 마우스를 올리면 황금빛으로 살짝 진해집니다 */
 .tab-btn:not(.active):hover {
-  color: var(--color-brown-light);
+  color: #b87c02;
 }
 
 
@@ -562,7 +622,7 @@ body {
    16. 주문 건수 배지 스타일
    ============================================= */
 
-/* .badge: 탭 버튼 옆에 붙는 둥근 숫자 표시 */
+/* .badge: 탭 버튼 옆에 붙는 둥근 숫자 표시 (골든 메달 느낌) */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -573,8 +633,9 @@ body {
   font-size: 11px;
   font-weight: 700;
   color: #ffffff;
-  background-color: var(--color-brown); /* 갈색 배경 */
+  background: linear-gradient(135deg, #e5a71a 0%, #b87c02 100%);
   border-radius: 10px;                  /* 완전한 원 or 알약 모양 */
+  box-shadow: 0 2px 5px rgba(184, 124, 2, 0.35);
   line-height: 1;
 }
 
@@ -612,28 +673,29 @@ body {
   gap: 12px;
 }
 
-/* .order-card: 주문 1건을 나타내는 카드 */
+/* .order-card: 주문 1건을 나타내는 카드 (황금빛 테두리 카드) */
 .order-card {
   position: relative;       /* 취소 버튼을 오른쪽 위에 절대 위치로 놓기 위해 필요 */
-  background-color: var(--color-beige);
+  background: linear-gradient(135deg, #fffdf8 0%, #fff9ec 100%);
   border-radius: var(--radius);
   padding: 14px 16px 14px 20px;
-  /* 왼쪽에 갈색 세로 줄 */
-  border-left: 4px solid var(--color-brown);
-  box-shadow: 0 2px 6px rgba(107, 66, 38, 0.08);
+  /* 왼쪽에 황금빛 24K 세로 바 */
+  border: 1px solid #fae4a7;
+  border-left: 4.5px solid #d49511;
+  box-shadow: 0 3px 10px rgba(184, 134, 11, 0.12);
 }
 
-/* 카드 1번 줄: "#1 홍길동님 · 5,000원" */
+/* 카드 1번 줄: "#1 홍길동님 · 500,000원" */
 .order-card-title {
   font-size: 15px;
   font-weight: 700;
-  color: var(--color-brown);
+  color: #855300;
   margin-bottom: 4px;
   /* 취소 버튼 공간 확보를 위해 오른쪽 여백 */
   padding-right: 56px;
 }
 
-/* 카드 2번 줄: "카페라떼 M사이즈 (샷 추가) 1잔" */
+/* 카드 2번 줄: "골든 아메리카노 M사이즈 (순금박 추가) 1잔" */
 .order-card-detail {
   font-size: 14px;
   color: #4a3728;
@@ -721,61 +783,666 @@ body {
 
 
 /* =============================================
-   15. 반응형 디자인 (모바일 대응)
+   20. 선택된 메뉴 카드 (폼 내 트리거 버튼)
+   ============================================= */
+
+.selected-menu-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background-color: #fffdf9;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.selected-menu-card:hover {
+  border-color: #d49511;
+  background-color: #fff9ea;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(212, 149, 17, 0.18);
+}
+
+.selected-menu-card.empty {
+  border-style: dashed;
+}
+
+.menu-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-card-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.menu-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card-title {
+  font-size: 15px;
+  color: #855300;
+  font-weight: 700;
+}
+
+.menu-card-desc {
+  font-size: 12px;
+  color: #8c7362;
+}
+
+.menu-card-action {
+  font-size: 13px;
+  font-weight: 700;
+  color: #855300;
+  background: linear-gradient(135deg, #fceecb 0%, #fae4a7 100%);
+  border: 1px solid #ffd700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(212, 149, 17, 0.15);
+}
+
+.no-options-tip {
+  font-size: 13px;
+  color: #a08470;
+  margin: 4px 0;
+  font-style: italic;
+}
+
+
+/* =============================================
+   21. 메뉴 선택 팝업 모달 스타일
+   ============================================= */
+
+.menu-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* 어두운 반투명 배경 */
+.menu-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(40, 24, 15, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* 팝업 창 본체 */
+.menu-modal-content {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 580px;
+  /* 섹션을 바꿔도 팝업 창 크기가 들쑥날쑥 변하지 않도록 높이를 안정적으로 고정 */
+  height: 640px;
+  max-height: 85vh;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 모달 헤더 */
+.menu-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background-color: var(--color-beige-dark);
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.menu-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-brown);
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--color-brown);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(107, 66, 38, 0.15);
+}
+
+/* 카테고리 탭 버튼들 */
+.menu-category-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: #faf6f0;
+  border-bottom: 1.5px solid var(--color-border);
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cat-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;           /* 버튼이 찌그러지지 않도록 방지 */
+  height: 36px;             /* 일관된 높이 확보 */
+  padding: 0 14px;          /* 좌우 여백 */
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1;           /* 폰트 줄간격으로 인한 텍스트 밀림 방지 */
+  color: var(--color-brown);
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.cat-tab-btn:hover {
+  background-color: var(--color-beige-dark);
+  border-color: #d49511;
+}
+
+.cat-tab-btn.active {
+  background: linear-gradient(135deg, #f7d050 0%, #d49511 100%);
+  color: #ffffff;
+  border-color: #c48800;
+  box-shadow: 0 3px 10px rgba(184, 134, 11, 0.35);
+  font-weight: 700;
+}
+
+/* 모달 본문 스크롤 영역 */
+.menu-modal-body {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* 카테고리별 섹션 */
+.menu-section {
+  margin-bottom: 24px;
+}
+
+.menu-section:last-child {
+  margin-bottom: 8px;
+}
+
+.menu-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-brown);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--color-border);
+  letter-spacing: -0.3px;
+}
+
+/* 메뉴 그리드: 2열 정렬, 좁은 화면에선 1열 자동 전환 */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 500px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 개별 메뉴 카드 (황금빛 카드) */
+.popup-menu-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 15px;
+  background-color: #fffdf8;
+  border: 1.5px solid var(--color-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.popup-menu-item:hover {
+  border-color: #d49511;
+  background: linear-gradient(135deg, #fffcf2 0%, #fff3d6 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(212, 149, 17, 0.25);
+}
+
+.popup-menu-item.selected {
+  border-color: #c48800;
+  background: linear-gradient(135deg, #fff5d9 0%, #fae6b4 100%);
+  box-shadow: 0 0 0 2px #d49511, 0 4px 14px rgba(212, 149, 17, 0.35);
+}
+
+/* 아이콘 원형/사각 골든 배경 */
+.popup-item-icon {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #fff3cf 0%, #fae4a7 100%);
+  border: 1px solid #ffd700;
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(184, 134, 11, 0.15);
+}
+
+/* 메뉴 정보 영역: 텍스트가 서로 겹치거나 잘리지 않도록 줄간격/여백 정리 */
+.popup-item-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.popup-item-name {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #3b2505;
+  line-height: 1.35;
+  word-break: keep-all; /* 한글 단어 단위 줄바꿈으로 깔끔하게 */
+}
+
+.popup-item-price {
+  font-size: 14px;
+  font-weight: 800;
+  color: #8f5a00;
+  margin-top: 4px;
+  letter-spacing: -0.3px;
+}
+
+.popup-item-desc {
+  font-size: 11.5px;
+  color: #7d5926;
+  margin-top: 4px;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+
+/* 모달 푸터 */
+.menu-modal-footer {
+  padding: 12px 20px;
+  background-color: var(--color-beige);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-cancel-btn {
+  flex: unset;
+  padding: 8px 18px;
+  font-size: 13px;
+}
+
+
+/* =============================================
+   22. 메뉴별 전용 옵션 리스트 (여유롭고 시원한 카드형)
+   ============================================= */
+
+.menu-options-list,
+#menu-options-list {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  gap: 10px;                /* 각 옵션 카드 사이의 위아래 간격 넉넉히 */
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* 각 옵션 항목: 가로 전체를 쓰는 여유로운 단일 행 카드 */
+.menu-option-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px;                /* 옵션명과 우측 가격 사이의 여유로운 간격 */
+  padding: 14px 18px;       /* 넉넉하고 시원한 안쪽 여백 */
+  background-color: #fffdf9;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.menu-option-item:hover {
+  background-color: #fdf7ee;
+  border-color: var(--color-brown-light);
+  transform: translateY(-1px);
+}
+
+/* 실제 input은 완전히 숨기기 */
+.menu-option-item input[type="checkbox"] {
+  display: none !important;
+}
+
+/* 옵션 좌측: 커스텀 체크박스 + 옵션 이름 (한 줄 유지) */
+.option-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;                /* 체크박스와 옵션명 사이 간격 */
+  flex: 1;                  /* 좌측 영역이 넉넉히 공간 차지 */
+  min-width: 0;
+}
+
+.custom-check-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.option-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #3d2b1f;
+  line-height: 1.3;
+  white-space: nowrap;      /* 옵션명이 아래 줄로 꺾이지 않도록 방지 */
+}
+
+/* 옵션 우측 가격 배지: 오른쪽 끝에 깔끔하게 배치 */
+.option-price {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-brown);
+  background-color: var(--color-beige-dark);
+  padding: 5px 11px;
+  border-radius: 6px;
+  flex-shrink: 0;           /* 가격 배지가 줄어들지 않도록 고정 */
+  white-space: nowrap;
+  letter-spacing: -0.2px;
+}
+
+
+
+/* 체크되었을 때 카드 전체와 체크박스 하이라이트 */
+.menu-option-item:has(input[type="checkbox"]:checked) {
+  background-color: #f7ede0;
+  border-color: var(--color-brown);
+}
+
+.menu-option-item:has(input[type="checkbox"]:checked) .custom-check-box {
+  background-color: var(--color-brown);
+  border-color: var(--color-brown);
+  position: relative;
+}
+
+/* 체크 표시 (V 모양) */
+.menu-option-item:has(input[type="checkbox"]:checked) .custom-check-box::after {
+  content: "✔";
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.menu-option-item:has(input[type="checkbox"]:checked) .option-name {
+  font-weight: 700;
+  color: var(--color-brown);
+}
+
+.menu-option-item:has(input[type="checkbox"]:checked) .option-price {
+  background-color: var(--color-brown);
+  color: #ffffff;
+}
+
+
+/* =============================================
+   15. 반응형 디자인 (모바일 대응 완벽 최적화)
    =============================================
    @media: 화면 너비가 특정 크기 이하일 때만 적용되는 스타일입니다 */
 
-/* 화면 너비 520px 이하 (주로 스마트폰) */
+/* 화면 너비 520px 이하 (일반 스마트폰) */
 @media (max-width: 520px) {
 
-  /* 컨테이너 좌우 여백 줄이기 */
+  /* 컨테이너 좌우 여백 */
   .container {
     margin: 0;
     padding: 0 0 32px;
   }
 
-  /* 헤더 모서리를 직각으로 (모바일에서는 화면 가득 채움) */
+  /* 헤더 모서리를 직각으로 */
   .cafe-header {
     border-radius: 0;
-    padding: 28px 20px 22px;
+    padding: 24px 16px 20px;
   }
 
-  /* 폼 카드도 모서리 직각 */
+  /* 로고 이모지 및 타이틀 크기 */
+  .cafe-logo {
+    font-size: 48px;
+  }
+
+  .cafe-name {
+    font-size: 25px;
+  }
+
+  .cafe-slogan {
+    font-size: 13px;
+  }
+
+  /* 폼 카드 및 탭 패널 */
   #order-form {
     border-radius: 0;
-    padding: 24px 20px 20px;
-    box-shadow: none;   /* 모바일에서는 그림자 제거 */
+    padding: 20px 16px;
+    box-shadow: none;
   }
 
-  /* 로고 이모지 크기 줄이기 */
-  .cafe-logo {
-    font-size: 52px;
+  .tab-panel {
+    border-radius: 0;
   }
 
-  /* 카페 이름 크기 줄이기 */
-  .cafe-name {
-    font-size: 26px;
+  #tab-history {
+    padding: 16px;
   }
 
-  /* 라디오/체크박스 그룹: 더 좁은 간격 */
-  .radio-group,
-  .checkbox-group {
+  /* 탭 버튼 패딩 */
+  .tab-btn {
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+
+  /* 라디오/체크박스 그룹: 모바일 최적화 */
+  .radio-group {
     gap: 8px;
   }
 
-  /* 두 버튼을 세로로 쌓기 (너무 좁을 때) */
+  .radio-label {
+    padding: 7px 12px;
+    font-size: 13.5px;
+  }
+
+  /* 선택된 메뉴 카드 */
+  .selected-menu-card {
+    padding: 12px 12px;
+  }
+
+  .menu-card-icon {
+    font-size: 26px;
+  }
+
+  .menu-card-title {
+    font-size: 14px;
+  }
+
+  .menu-card-action {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  /* 메뉴별 전용 옵션 카드: 모바일 맞춤 패딩 */
+  .menu-option-item {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .option-name {
+    font-size: 13.5px;
+  }
+
+  .option-price {
+    font-size: 12.5px;
+    padding: 4px 8px;
+  }
+
+  /* 예상 금액 영역 */
+  .price-display {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .price-display strong {
+    font-size: 21px;
+  }
+
+  /* 두 버튼을 세로로 정렬하여 터치 영역 확보 */
   .button-group {
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 13px;
+  }
+
+  /* 팝업 모달 최적화: 모바일 화면에 맞춰 바닥 시트(Bottom Sheet) 느낌으로 꽉 차고 쾌적하게 */
+  .menu-modal {
+    padding: 10px;
+    align-items: flex-end; /* 모바일에서는 하단 시트 느낌으로 정렬 */
+  }
+
+  .menu-modal-content {
+    max-width: 100%;
+    height: 82vh;          /* 모바일 화면 높이에 맞춘 고정 높이 */
+    max-height: 88vh;
+    border-radius: 18px 18px 12px 12px;
+  }
+
+  .menu-modal-header {
+    padding: 14px 16px;
+  }
+
+  .menu-modal-title {
+    font-size: 16.5px;
+  }
+
+  .menu-category-tabs {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .cat-tab-btn {
+    height: 33px;
+    padding: 0 11px;
+    font-size: 12.5px;
+  }
+
+  .menu-modal-body {
+    padding: 14px 12px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr; /* 1열 정렬 */
+    gap: 10px;
+  }
+
+  .popup-menu-item {
+    padding: 10px 12px;
   }
 }
 
-/* 화면 너비 360px 이하 (매우 작은 스마트폰) */
-@media (max-width: 360px) {
+/* 화면 너비 380px 이하 (초소형 스마트폰) */
+@media (max-width: 380px) {
   .cafe-name {
     font-size: 22px;
   }
 
-  .cafe-slogan {
+  .tab-btn {
+    font-size: 13px;
+    padding: 11px 6px;
+  }
+
+  .menu-option-item {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .option-name {
+    font-size: 13px;
+  }
+
+  .option-price {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  .cat-tab-btn {
+    height: 31px;
+    padding: 0 9px;
     font-size: 12px;
   }
 }
+
